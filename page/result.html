@@ -1,0 +1,368 @@
+<!DOCTYPE
+    html>
+<html
+    lang="en">
+
+<head>
+    <meta
+        charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>
+        Multi-Step
+        Form
+        -
+        Result
+    </title>
+    <link
+        rel="stylesheet"
+        href="style_result.css">
+</head>
+
+<body>
+
+    <!-- Top Bar Picture -->
+    <div
+        class="top-bar">
+        <img src="../picture/top_bar.png"
+            alt="Top Bar Picture"
+            style="max-width: 100%;">
+    </div>
+
+    <!-- Main Content Layout -->
+    <div
+        class="main-content">
+        <!-- Left Side Picture -->
+        <div
+            class="left-side">
+            <div
+                id="iconImages">
+            </div>
+            <div
+                id="profile">
+
+            </div>
+        </div>
+
+
+        <!-- Right Side Form -->
+
+        <div
+            class="right-side">
+            <div
+                class="center-text">
+                <h2>分析完成
+                    </h3>
+                    <h4>根據您提供的條件設定，我們提供了以下保障方案：
+                    </h4>
+            </div>
+
+            <!-- Based on the condition below to add images -->
+            <!-- <div id="resultImages"> 
+            </div> -->
+
+            <!-- Based on the condition below to add card -->
+            <div class="card-container"
+                id="card-container">
+            </div>
+        </div>
+
+        <script>
+
+
+            // Function to add a card
+            function addCard(content) {
+                var cardContainer = document.getElementById('card-container');
+                var card = document.createElement('div');
+                card.className = 'card';
+                card.textContent = content; // You can also set innerHTML for more complex content
+                cardContainer.appendChild(card);
+            }
+
+            function addCard(titleText, descriptionText, valueText, detailText, buttonText, path) {
+                var cardContainer = document.getElementById('card-container');
+                var card = document.createElement('div');
+                card.className = 'card';
+
+                // Create and append the title div
+                var title = document.createElement('div');
+                title.className = 'card-title';
+                title.textContent = titleText;
+                card.appendChild(title);
+
+                // Create and append the description div
+                var description = document.createElement('div');
+                description.className = 'card-description';
+                description.textContent = descriptionText;
+                card.appendChild(description);
+
+                // Create and append the value div
+                var value = document.createElement('div');
+                value.className = 'card-value';
+                value.innerHTML = valueText; // We use innerHTML to parse the <span> element
+                card.appendChild(value);
+
+                // Create and append the detail div
+                var detail = document.createElement('div');
+                detail.className = 'card-detail';
+                detail.textContent = detailText;
+                card.appendChild(detail);
+
+                // Create and append the button
+                var button = document.createElement('button');
+                button.className = 'card-button';
+                button.textContent = buttonText;
+                button.onclick = function () {
+                    window.location.href = path; // Specify the path to your HTML file
+                };
+                card.appendChild(button);
+
+                // Finally, append the card div to the container
+                cardContainer.appendChild(card);
+            }
+
+            //const resultImagesDiv = document.getElementById('resultImages');
+            const icon = document.getElementById('iconImages');
+            const profile = document.getElementById('profile');
+            const selectedGender = sessionStorage.getItem('selectedGender');
+            const selectedAge = sessionStorage.getItem('selectedAge');
+            const selectedPet = sessionStorage.getItem('selectedPet');
+            const selectedTransportation = sessionStorage.getItem('selectedTransportation');
+            const selectedLeisureActivity = sessionStorage.getItem('selectedLeisureActivity');
+            const selectedEating = sessionStorage.getItem('selectedEating');
+
+            //for gender
+            /*if (selectedGender === 'girl') {
+                var genderImage = document.createElement('img');
+                genderImage.className = 'result-image';
+                genderImage.src = '../result/婦女險.png';
+                resultImagesDiv.appendChild(genderImage);
+            }*/
+
+            var genderText = document.createElement('p');
+            genderText.className = 'text';
+
+            switch (selectedGender) {
+                case "girl":
+                    genderText.textContent = '女性'; // Add the text content to the paragraph
+                    profile.appendChild(genderText); // Append the paragraph to the div
+                    var iconImage = document.createElement('img');
+                    iconImage.style = "max-width: 100%;";
+                    iconImage.src = '../result/結果頭貼＿女生.png';
+                    icon.appendChild(iconImage);
+                    break;
+
+                case 'boy':
+                    genderText.textContent = '男性'; // Add the text content to the paragraph
+                    profile.appendChild(genderText); // Append the paragraph to the div
+                    var iconImage = document.createElement('img');
+                    iconImage.style = "max-width: 100%;";
+                    iconImage.src = '../result/結果頭貼＿男生.png';
+                    icon.appendChild(iconImage);
+                    break;
+
+                default:
+                //imageSources_age = []; // Default case if none of the above matches
+            }
+
+
+            //for age
+            //var imageSources_age;
+            var ageText = document.createElement('p');
+            ageText.className = 'text';
+
+            switch (selectedAge) {
+                case '19to34':
+                    //imageSources_age = ['../result/小白入門款1.png', '../result/小白入門款2.png', '../result/小白入門款3.png'];        
+                    ageText.textContent = "19～34歲年輕人"; // Add the text content to the paragraph
+                    profile.appendChild(ageText); // Append the paragraph to the div
+                    addCard('年輕小白入門款', '年繳保費', '6,005 <span class="currency">元/新臺幣</span>', '平均月繳 500 元', '查看方案詳情', '年輕小白入門款保障內容.html');
+                    break;
+
+                case '35to44':
+                    //imageSources_age = ['../result/財務抗壓推薦age35.png', '../result/壽險顧家方案age35.png']; // Update with appropriate images for this age range
+                    ageText.textContent = "35～44歲青壯年"; // Add the text content to the paragraph
+                    profile.appendChild(ageText); // Append the paragraph to the div
+                    addCard('青壯年壽險顧家方案', '年繳保費', '16,087 <span class="currency">元/新臺幣</span>', '平均月繳 1340 元', '查看方案詳情', '青壯年壽險顧家方案保障內容.html');
+                    break;
+
+                case '45to60':
+                    //imageSources_age = ['../result/抗老加強方案age45.png', '../result/長照升級款age45.png', '../result/理想退休生活age45.png'];
+                    ageText.textContent = "45～60歲中年後"; // Add the text content to the paragraph
+                    profile.appendChild(ageText); // Append the paragraph to the div
+                    addCard('中年抗老加強方案', '年繳保費', '35,440 <span class="currency">元/新臺幣</span>', '平均月繳 2950 元', '查看方案詳情');
+                    break;
+
+                case 'above61':
+                    //imageSources_age = ['../result/平安防護款age65.png', '../result/老後生活費age65.png', '../result/高齡癌症加強age61.png'];
+                    ageText.textContent = "61歲以上高齡長輩"; // Add the text content to the paragraph
+                    profile.appendChild(ageText); // Append the paragraph to the div
+                    addCard('高齡平安防護款', '年繳保費', '15,700 <span class="currency">元/新臺幣</span>', '平均月繳 1300 元', '查看方案詳情');
+                    break;
+
+                default:
+                //imageSources_age = []; // Default case if none of the above matches
+            }
+
+            /* for (var i = 0; i < imageSources_age.length; i++) {
+                var ageImage = document.createElement('img');
+                ageImage.className = 'result-image';
+                ageImage.src = imageSources_age[i];
+                resultImagesDiv.appendChild(ageImage);
+            } */
+
+            //for pet
+            /*if (selectedPet === 'have_pet') {
+                var petImage = document.createElement('img');
+                petImage.className = 'result-image';
+                petImage.src = '../result/寵物保險.png';
+                resultImagesDiv.appendChild(petImage);
+            }*/
+
+            /*var petText = document.createElement('p');
+                petText.className = 'text';
+
+            switch (selectedPet) {
+                case 'have_pet':
+                //imageSources_age = ['../result/小白入門款1.png', '../result/小白入門款2.png', '../result/小白入門款3.png'];        
+                petText.textContent = '有養寵物'; // Add the text content to the paragraph
+                profile.appendChild(petText); // Append the paragraph to the div
+                addCard('毛小孩基礎方案款', '年繳保費', '2,840 <span class="currency">元/新臺幣</span>', '平均月繳 230 元', '查看方案詳情');
+                break;
+
+                case 'no_pet':
+                //imageSources_age = ['../result/財務抗壓推薦age35.png', '../result/壽險顧家方案age35.png']; // Update with appropriate images for this age range
+                petText.textContent = '沒有養寵物'; // Add the text content to the paragraph
+                profile.appendChild(petText); // Append the paragraph to the div
+                break;
+
+                default:
+                    //imageSources_age = []; // Default case if none of the above matches
+            }*/
+
+            //for Transportation
+            //var imageSources_Transportation;
+            var transportationText = document.createElement('p');
+            transportationText.className = 'text';
+
+            switch (selectedTransportation) {
+                case 'car':
+                    //imageSources_Transportation = ['../result/汽車險.png'];
+                    transportationText.textContent = "開車"; // Add the text content to the paragraph
+                    profile.appendChild(transportationText); // Append the paragraph to the div
+                    addCard('汽車強制險', '年繳保費', '800 <span class="currency">元/新臺幣</span>', '平均月繳 66 元', '查看方案詳情');
+                    break;
+
+                case 'motorcycle':
+                    //imageSources_Transportation = ['../result/機車險.png', '../result/通勤必備款.png']; // Update with appropriate images for this age range
+                    transportationText.textContent = "騎機車"; // Add the text content to the paragraph
+                    profile.appendChild(transportationText); // Append the paragraph to the div
+                    addCard('騎士基本保障組', '年繳保費', '760 <span class="currency">元/新臺幣</span>', '平均月繳 63 元', '查看方案詳情', '騎士基本保障組保障內容.html');
+                    break;
+
+                case 'public_transportation':
+                    //imageSources_Transportation = []; // Update with appropriate images for this age range
+                    transportationText.textContent = "搭乘大眾交通運輸"; // Add the text content to the paragraph
+                    profile.appendChild(transportationText); // Append the paragraph to the div
+                    break;
+
+                default:
+                //imageSources_Transportation = []; // Default case if none of the above matches
+            }
+
+            /*for (var i = 0; i < imageSources_Transportation.length; i++) {
+                var transportationImage = document.createElement('img');
+                transportationImage.className = 'result-image';
+                transportationImage.src = imageSources_Transportation[i];
+                resultImagesDiv.appendChild(transportationImage);
+            }*/
+
+            //for Leisure Activity
+            //var imageSources_LeisureActivity;
+            var LeisureActivityText = document.createElement('p');
+            LeisureActivityText.className = 'text';
+
+            switch (selectedLeisureActivity) {
+                case 'run':
+                    //imageSources_LeisureActivity = ['../result/汽車險.png'];
+                    LeisureActivityText.textContent = "路跑"; // Add the text content to the paragraph
+                    profile.appendChild(LeisureActivityText); // Append the paragraph to the div
+                    addCard('路跑基本型保險', '日繳保費', '80 <span class="currency">元/新臺幣</span>', '平均日繳 80 元', '查看方案詳情');
+                    break;
+
+                case 'climb':
+                    //imageSources_LeisureActivity = ['../result/登山綜合保險.png']; // Update with appropriate images for this age range
+                    LeisureActivityText.textContent = "登山健行"; // Add the text content to the paragraph
+                    profile.appendChild(LeisureActivityText); // Append the paragraph to the div
+                    addCard('登山基本型保險', '日繳保費', '140 <span class="currency">元/新臺幣</span>', '平均日繳 140 元', '查看方案詳情');
+                    break;
+
+                case 'water':
+                    //imageSources_LeisureActivity = ['../result/海域活動險.png'];
+                    LeisureActivityText.textContent = "水上活動"; // Add the text content to the paragraph
+                    profile.appendChild(LeisureActivityText); // Append the paragraph to the div
+                    addCard('水上活動基本型保險', '日繳保費', '145 <span class="currency">元/新臺幣</span>', '平均日繳 145 元', '查看方案詳情');
+                    break;
+
+                case 'camp':
+                    //imageSources_LeisureActivity = ['../result/機車險.png']; // Update with appropriate images for this age range
+                    LeisureActivityText.textContent = "露營"; // Add the text content to the paragraph
+                    profile.appendChild(LeisureActivityText); // Append the paragraph to the div
+                    addCard('露營基本型保險', '日繳保費', '55 <span class="currency">元/新臺幣</span>', '平均日繳 55 元', '查看方案詳情');
+                    break;
+
+                case 'triathlon':
+                    //imageSources_LeisureActivity = ['../result/汽車險.png'];
+                    LeisureActivityText.textContent = "鐵人三項"; // Add the text content to the paragraph
+                    profile.appendChild(LeisureActivityText); // Append the paragraph to the div
+                    addCard('鐵人三項基本型保險', '日繳保費', '150 <span class="currency">元/新臺幣</span>', '平均月繳 150 元', '查看方案詳情');
+                    break;
+
+                default:
+                //imageSources_LeisureActivity = []; // Default case if none of the above matches
+            }
+
+            /*for (var i = 0; i < imageSources_LeisureActivity.length; i++) {
+                var LeisureActivityImage = document.createElement('img');
+                LeisureActivityImage.className = 'result-image';
+                LeisureActivityImage.src = imageSources_LeisureActivity[i];
+                resultImagesDiv.appendChild(LeisureActivityImage);
+            }*/
+
+            //for eating
+            /*if (selectedEating === 'eatOut') {
+                var eatImage = document.createElement('img');
+                eatImage.className = 'result-image';
+                eatImage.src = '../result/少動外食族.png';
+                resultImagesDiv.appendChild(eatImage);
+    
+            }*/
+
+            var eatText = document.createElement('p');
+            eatText.className = 'text';
+
+            switch (selectedEating) {
+                case "eatOut":
+                    //imageSources_age = ['../result/小白入門款1.png', '../result/小白入門款2.png', '../result/小白入門款3.png'];        
+                    eatText.textContent = '經常外食'; // Add the text content to the paragraph
+                    profile.appendChild(eatText); // Append the paragraph to the div
+                    addCard('少動外食族', '年繳保費', '3,600 <span class="currency">元/新臺幣</span>', '平均月繳 300 元', '查看方案詳情');
+                    break;
+
+                case 'eatHome':
+                    //imageSources_age = ['../result/財務抗壓推薦age35.png', '../result/壽險顧家方案age35.png']; // Update with appropriate images for this age range
+                    eatText.textContent = '不常外食'; // Add the text content to the paragraph
+                    profile.appendChild(eatText); // Append the paragraph to the div
+                    break;
+
+                default:
+                //imageSources_age = []; // Default case if none of the above matches
+            }
+
+        </script>
+
+
+</body>
+
+</html>

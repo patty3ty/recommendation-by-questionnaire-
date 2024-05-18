@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Multi-Step Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Bar Picture -->
+    <div class="top-bar">
+        <img src="../picture/top_bar.png" alt="Top Bar Picture" style="max-width: 100%;">
+    </div>
+
+    <!-- Main Content Layout -->
+    <div class="main-content">
+        <!-- Left Side Picture -->
+        <div class="left-side">
+            <img src="../picture/left_side.png" alt="Left Side Picture" style="max-width: 100%;">
+        </div>
+
+        <!-- Right Side Form -->
+
+        <div class="right-side">
+            <div class="step">
+                3 / 6
+            </div>
+            <div class="question">
+                選擇被保險人的職業
+            </div>
+
+            <div>
+                <button id="selection_button1" class="selection" onclick="selectOccupation('first_inner')">第一類(內勤人員、教師、家庭主婦等)</button>   
+            </div>
+
+            <div>
+                <button id="selection_button2" class="selection" onclick="selectOccupation('second_outer')">第二類(外勤業務、作業員、廚師等)</button>
+            </div>
+
+            <div>
+                <button id="selection_button3" class="selection" onclick="selectOccupation('third_other')">其他及第三類(技術工程、一般軍警等)</button>
+            </div>
+
+            <div>
+                <button class="button-prev">上一步</button>
+                <button id="button_next" class="button-next" onclick="toChild()">下一步</button>
+            </div>
+
+            <script>
+                
+                function selectOccupation(occupation) {
+                    sessionStorage.setItem('selectedOccupation', occupation);
+                }
+
+                for (let i = 1; i <= 3; i++) {
+                    document.getElementById(`selection_button${i}`).addEventListener("click", function() {
+                    this.classList.toggle("selection-clicked");
+                    var button_next = document.getElementById('button_next');
+                    button_next.classList.toggle("button-next-clicked");
+                });
+                }
+
+                function toChild() {
+                    window.location.href = 'pet.html';
+                }
+
+            </script>
+        </div>
+
+       
+    </div>
+
+</body>
+</html>

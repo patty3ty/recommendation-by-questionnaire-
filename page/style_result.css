@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color:#F5F5F5;
+}
+
+.top-bar {
+    width: 100%;
+}
+
+.main-content {
+    display: flex;
+}
+
+.left-side {
+    flex: 1;
+    margin: 0px; /* Adjust this value as needed */
+    padding: 0px;
+}
+
+.right-side {
+    flex: 5;
+    font-family: 'Noto Sans TC';
+    margin: 0px;
+    padding: 0px;
+}
+        
+.result-image {
+    height: 400px; /* Fixed height for all images */
+    width: auto; /* Width is auto to maintain aspect ratio */
+    object-fit: contain; /* Image will be scaled to maintain its aspect ratio while fitting within the element’s content box */    
+}
+
+.text{
+  font-family: 'Noto Sans TC';
+  font-size: 15px;
+  color: black;
+  margin-left: 90px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  margin-left: 100px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 0px;
+  width: 300px; /* Adjust width as needed */
+  font-family: 'Noto Sans TC';
+}
+
+.card-title {
+  color: #000000;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.card-description {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.card-value {
+  color: #27ae60;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.currency {
+  color: #484545;
+  font-size: 14px; /* Smaller font size for the currency */
+}
+
+.card-detail {
+  color:  #777;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.card-button {
+  background-color: #e3e8ee;
+  border: none;
+  border-radius: 20px;
+  color: #27ae60;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  margin-left: 90px;
+}
+
+.card-button:hover {
+  background-color: #c1efd3;
+}

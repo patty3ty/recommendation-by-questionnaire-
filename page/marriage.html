@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Form - Marriage</title>
+</head>
+<body>
+
+    <h1>Step 2: Marriage Status</h1>
+
+    <button onclick="selectStatus('single')">Single</button>
+    <button onclick="selectStatus('married')">Married</button>
+
+    <script>
+        function selectStatus(status) {
+            sessionStorage.setItem('selectedStatus', status);
+            window.location.href = 'result.html';
+        }
+    </script>
+
+</body>
+</html>

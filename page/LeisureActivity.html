@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Multi-Step Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Bar Picture -->
+    <div class="top-bar">
+        <img src="../picture/top_bar.png" alt="Top Bar Picture" style="max-width: 100%;">
+    </div>
+
+    <!-- Main Content Layout -->
+    <div class="main-content">
+        <!-- Left Side Picture -->
+        <div class="left-side">
+            <img src="../picture/left_side.png" alt="Left Side Picture" style="max-width: 100%;">
+        </div>
+
+        <!-- Right Side Form -->
+
+        <div class="right-side">
+            <div class="step">
+                4/ 6
+            </div>
+            <div class="question">
+                選擇被保險人的戶外休閒活動
+            </div>
+
+            <div>
+                <button id="selection_button1" class="selection" onclick="selectLeisureActivity('run')">路跑</button>   
+            </div>
+
+            <div>
+                <button id="selection_button2" class="selection" onclick="selectLeisureActivity('climb')">登山健行</button>
+            </div>
+
+            <div>
+                <button id="selection_button3" class="selection" onclick="selectLeisureActivity('water')">水上活動</button>
+            </div>
+
+            <div>
+                <button id="selection_button4" class="selection" onclick="selectLeisureActivity('camp')">露營</button>   
+            </div>
+
+            <div>
+                <button id="selection_button5" class="selection" onclick="selectLeisureActivity('triathlon')">鐵人三項</button>
+            </div>
+
+            <div>
+                <button class="button-prev">上一步</button>
+                <button id="button_next" class="button-next" onclick="toEat()">下一步</button>
+            </div>
+
+            <script>
+                
+                function selectLeisureActivity(LeisureActivity) {
+                    sessionStorage.setItem('selectedLeisureActivity', LeisureActivity);
+                }
+
+                for (let i = 1; i <= 6; i++) {
+                    document.getElementById(`selection_button${i}`).addEventListener("click", function() {
+                    this.classList.toggle("selection-clicked");
+                    var button_next = document.getElementById('button_next');
+                    button_next.classList.toggle("button-next-clicked");
+                });
+                }
+
+                function toEat() {
+                    window.location.href = 'eat.html';
+                }
+
+            </script>
+        </div>
+
+       
+    </div>
+
+</body>
+</html>

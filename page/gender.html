@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Multi-Step Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Bar Picture -->
+    <div class="top-bar">
+        <img src="../picture/top_bar.png" alt="Top Bar Picture" style="max-width: 100%;">
+    </div>
+
+    <!-- Main Content Layout -->
+    <div class="main-content">
+        <!-- Left Side Picture -->
+        <div class="left-side">
+            <img src="../picture/left_side.png" alt="Left Side Picture" style="max-width: 100%;">
+        </div>
+
+        <!-- Right Side Form -->
+
+        <div class="right-side">
+            <div class="step">
+                1 / 6
+            </div>
+            <div class="question">
+                選擇被保險人的性別
+            </div>
+
+            <div>
+                <button id="selection_button1" class="selection" onclick="selectGender('boy')">男性</button>
+                
+            </div>
+
+            <div>
+                <button id="selection_button2" class="selection" onclick="selectGender('girl')">女性</button>
+            </div>
+
+             <div>
+                <button class="button-prev">上一步</button>
+                <button id="button_next" class="button-next" onclick="toAge()">下一步</button>
+            </div>
+
+            <script>
+                
+                function selectGender(gender) {
+                    sessionStorage.setItem('selectedGender', gender);
+                }
+
+                for (let i = 1; i <= 2; i++) {
+                    document.getElementById(`selection_button${i}`).addEventListener("click", function() {
+                    this.classList.toggle("selection-clicked");
+                    var button_next = document.getElementById('button_next');
+                    button_next.classList.toggle("button-next-clicked");
+                });
+                }
+
+                function toAge() {
+                    window.location.href = 'age.html';
+                }
+
+            </script>
+        </div>
+
+       
+    </div>
+
+</body>
+</html>
